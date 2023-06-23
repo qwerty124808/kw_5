@@ -9,6 +9,9 @@ class ParsingError(Exception):
         return "Ошибка подключения данных по API." 
 
 class Parser():
+    """ 
+    класс для парсинга данных 
+    """
 
     def __init__(self):
         self.__header = {

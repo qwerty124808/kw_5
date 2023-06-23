@@ -5,6 +5,7 @@ CREATE TABLE vacancies(
     area varchar(255),
     salary_from integer,
     salary_to integer,
+    avg_salary integer,
     curency varchar(255),
     PRIMARY KEY (id)
 );

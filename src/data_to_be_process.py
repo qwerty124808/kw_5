@@ -21,10 +21,17 @@ class Data:
                 data_vacansy["salary_min"] = None
                 data_vacansy["salary_max"] = None
                 data_vacansy["currency"] = None
+                data_vacansy["avg_salary"] = None
             else:
                 data_vacansy["salary_min"] = vacansys["salary"]["from"]
                 data_vacansy["salary_max"] =  vacansys["salary"]["to"]
                 data_vacansy["currency"] = vacansys["salary"]["currency"]
+                if data_vacansy["salary_min"] is not None and data_vacansy["salary_max"] is None:
+                    data_vacansy["avg_salary"] = data_vacansy["salary_min"]
+                elif data_vacansy["salary_min"] is None and data_vacansy["salary_max"] is not None:
+                    data_vacansy["avg_salary"] = data_vacansy["salary_max"]
+                else:
+                    data_vacansy["avg_salary"] = (data_vacansy["salary_min"] + data_vacansy["salary_max"]) // 2
             data_vacansy["id"] = id
             data_vacansy["name"] = vacansys_name
             data_vacansy["employer_url"] = url

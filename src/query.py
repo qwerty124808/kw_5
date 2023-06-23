@@ -7,10 +7,14 @@ cur = conn.cursor()
 
 
 def write_data(employer, conn, cur):
-    empoer_name = employer["name"]
-    emploer_id = employer["id"]
-    cur.execute("INSERT INTO employers VALUES (%s, %s)", (emploer_id, empoer_name))
+    """
+        записывает данные в базу
+    """
+    employer_name = employer["name"]
+    employer_id = employer["id"]
+    cur.execute("INSERT INTO employers VALUES (%s, %s)", (employer_id, employer_name))
     for vacanci in employer["vacancies"]:
+        print(vacanci)
         vacanci_id = vacanci["id"]
         vacanci_name = vacanci["name"]
         employer_url = vacanci["employer_url"]
@@ -18,14 +22,14 @@ def write_data(employer, conn, cur):
         salary_from = vacanci["salary_min"]
         salary_to = vacanci["salary_max"]
         curency = vacanci["currency"]
-        cur.execute("INSERT INTO vacancies VALUES (%s, %s, %s, %s, %s, %s, %s, %s)", (vacanci_id, 
+        avg_salary = vacanci["avg_salary"]
+        cur.execute("INSERT INTO vacancies VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)", (vacanci_id, 
                                                                                       vacanci_name, 
                                                                                       employer_url, 
-                                                                                      area, salary_from, 
+                                                                                      area, 
+                                                                                      salary_from, 
                                                                                       salary_to,
+                                                                                      avg_salary,
                                                                                       curency,
-                                                                                      emploer_id))
-        
-
-
+                                                                                      employer_id))
     conn.commit()
