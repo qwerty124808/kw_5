@@ -5,6 +5,7 @@ from src.db_manager import DBManager
 parser = Parser()
 employers_list = parser.get_employers()
 for employer in employers_list:
+    pass
     employer = employer.corect_data()
     write_data_test = write_data(employer, conn, cur)
 

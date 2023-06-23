@@ -48,7 +48,7 @@ class Parser():
                                 headers=self.__header,
                                 )                      
         if response.status_code != 200:
-            raise ParsingEror()
+            raise ParsingError()
         return response.json()
 
 
